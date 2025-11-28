@@ -29,4 +29,45 @@ router.get("/", (req, res) => {
   res.send(products);
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  const product = products.find((p) => parseInt(id) == p.id);
+
+  if (!product) return res.status(404).send("Product not found");
+  res.send(product);
+});
+
+router.post("/", (req, res) => {
+  const newProduct = {
+    id: products.length + 1,
+    ...req.body,
+  };
+
+  products.push(newProduct);
+
+  res.status(201).send(newProduct);
+});
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const product = products.find((p) => parseInt(id) == p.id);
+
+  if (!product) return res.status(404).send("Product not found");
+
+  Object.assign(product, req.body);
+  res.send(product);
+});
+
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  const product = products.find((p) => parseInt(id) == p.id);
+
+  if (!product) return res.status(404).send("Product not found");
+
+  const index = products.findIndex((p) => parseInt(id) == p.id);
+  products.splice(index, 1);
+
+  res.status(200).send(product);
+});
+
 module.exports = router;
