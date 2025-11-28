@@ -1,9 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const sequelize = require("./config/database");
+const ProductModel = require("./models/productModel");
 const productsRouter = require("./routes/products");
 
 const app = express();
+
+const Products = ProductModel(sequelize);
 
 sequelize
   .sync({ alter: true })
