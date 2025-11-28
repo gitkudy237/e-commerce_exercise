@@ -24,3 +24,9 @@ const products = [
     created_at: "2025-02-20 09:45:00",
   },
 ];
+
+router.get("/", (req, res) => {
+  res.send(products);
+});
+
+module.exports = router;
