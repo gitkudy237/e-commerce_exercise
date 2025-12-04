@@ -14,13 +14,17 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/:id", (req, res) => {
-//   const { id } = req.params;
-//   const product = products.find((p) => parseInt(id) == p.id);
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
 
-//   if (!product) return res.status(404).send("Product not found");
-//   res.send(product);
-// });
+    if (!product) return res.status(404).send("Product not found");
+    res.status(200).send(product);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -31,26 +35,32 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.put("/:id", (req, res) => {
-//   const { id } = req.params;
-//   const product = products.find((p) => parseInt(id) == p.id);
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
 
-//   if (!product) return res.status(404).send("Product not found");
+    if (!product) return res.status(404).send("Product not found");
 
-//   Object.assign(product, req.body);
-//   res.send(product);
-// });
+    await product.update(req.body);
+    res.status(200).send(product);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
 
-// router.delete("/:id", (req, res) => {
-//   const { id } = req.params;
-//   const product = products.find((p) => parseInt(id) == p.id);
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
 
-//   if (!product) return res.status(404).send("Product not found");
+    if (!product) return res.status(404).send("Product not found");
 
-//   const index = products.findIndex((p) => parseInt(id) == p.id);
-//   products.splice(index, 1);
-
-//   res.status(200).send(product);
-// });
+    await product.destroy();
+    res.status(200).send(product);
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+});
 
 module.exports = router;
