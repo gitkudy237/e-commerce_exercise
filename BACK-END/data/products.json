@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Headphones",
+      "price": "20,000",
+      "image": "https://images.unsplash.com/photo-1519677100203-a0e668c92439",
+      "description": "Comfortable wireless headphones with high-quality sound."
+    },
+    {
+      "id": 2,
+      "name": "Gaming Mouse RGB",
+      "price": 12000,
+      "image": "https://images.unsplash.com/photo-1587202372775-9897066f5e13",
+      "description": "High-precision gaming mouse with RGB lighting."
+    },
+    {
+      "id": 3,
+      "name": "Smartwatch Fitness Tracker",
+      "price": 49500,
+      "image": "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642",
+      "description": "Waterproof smartwatch with heart-rate monitor."
+    },
+    {
+      "id": 4,
+      "name": "4K Ultra HD Monitor",
+      "price": 249000,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b82b7c7",
+      "description": "Crisp 4K display perfect for work and gaming."
+    },
+    {
+      "id": 3,
+      "name": "Smartwatch Fitness Tracker",
+      "price": 49500,
+      "image": "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642",
+      "description": "Waterproof smartwatch with heart-rate monitor."
+    }
+  ]
