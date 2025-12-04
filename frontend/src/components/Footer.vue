@@ -12,11 +12,6 @@
           <li><router-link to="/products">Products</router-link></li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h3>Contact</h3>
-        <p>Email: info@eshop.com</p>
-        <p>Phone: +1 (555) 123-4567</p>
-      </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 E-Shop. All rights reserved.</p>
@@ -28,6 +23,8 @@
 
 <style scoped>
 .footer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   background-color: #333;
   color: white;
   padding: 2rem 0 0;

@@ -52,12 +52,16 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+  flex: 1;
 }
 
 .loading,

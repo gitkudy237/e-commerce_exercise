@@ -28,6 +28,15 @@
           <button @click="handleAddToCart" class="btn btn-add-to-cart">
             Add to Cart
           </button>
+          <router-link
+            :to="`/products/${product.id}/edit`"
+            class="btn btn-edit"
+          >
+            Edit Product
+          </router-link>
+          <button @click="handleDelete" class="btn btn-delete">
+            Delete Product
+          </button>
         </div>
 
         <div class="product-meta">
@@ -41,10 +50,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import productService from "../services/productService";
 
 const route = useRoute();
+const router = useRouter();
 const product = ref(null);
 const loading = ref(false);
 const error = ref(null);
@@ -64,6 +74,22 @@ const fetchProduct = async () => {
 const handleAddToCart = () => {
   console.log("Added to cart:", product.value);
   // This will be implemented in Stage 4 with cart management
+};
+
+const handleDelete = async () => {
+  if (
+    confirm(
+      "Are you sure you want to delete this product? This action cannot be undone."
+    )
+  ) {
+    try {
+      await productService.deleteProduct(product.value.id);
+      alert("Product deleted successfully!");
+      router.push("/products");
+    } catch (err) {
+      error.value = `Failed to delete product: ${err.message}`;
+    }
+  }
 };
 
 const formatDate = (date) => {
@@ -154,6 +180,9 @@ onMounted(() => {
 
 .product-actions {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -166,10 +195,34 @@ onMounted(() => {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn:hover {
+.btn-add-to-cart {
+  background-color: #28a745;
+}
+
+.btn-add-to-cart:hover {
   background-color: #218838;
+}
+
+.btn-edit {
+  background-color: #007bff;
+}
+
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
 }
 
 .product-meta {
