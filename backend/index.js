@@ -14,6 +14,7 @@ sequelize
   .catch((err) => console.error("Sync failed: ", err.message));
 
 app.use(express.json());
+app.use(express.static("./"));
 app.use("/api/products", productsRouter);
 
 const port = process.env.PORT || 5000;
