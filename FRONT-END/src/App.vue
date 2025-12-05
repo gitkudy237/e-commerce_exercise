@@ -4,7 +4,7 @@
     <nav class="navbar">
       <h1 class="logo">
         <img src="./assets/logo.webp" alt="" />
-        MiniShop NEWSHOP
+        MiniShop
       </h1>
 
       <div class="nav-links">
