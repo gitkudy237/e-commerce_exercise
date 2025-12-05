@@ -15,6 +15,6 @@ app.get("/", (req, res) => {
   res.send("Backend API is running...");
 });
 
-// start server new server
+// start server
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
